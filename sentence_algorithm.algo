@@ -1,0 +1,42 @@
+ALGORITHM sentence_reading
+VAR
+    character_count: INTEGER := 0;
+    word_count:INTEGER := 1; 
+    vowel_count:INTEGER := 0;
+    //iterator in the FOR loop
+    i: INTEGER;
+    current_char: CHAR;
+    sentence: STRING;
+BEGIN
+    // Reading the sentence
+    Read(sentence)
+    // to get the length of the sentence to determine how many times the loop runs.
+    FOR i FROM 1 TO length(sentence) DO
+        // this access each character as the loop runs
+        current_char := sentence[i]
+        // after each character accessed, the character count is incremented by 1
+        character_count := character_count + 1
+
+        // using an IF statement to check if current character is a space to increment word count
+
+        IF current_char = " " THEN
+            word_count := word_count + 1;
+        END_IF
+
+        // using an IF statement to check if current character is a vowel to increment vowel count
+
+        IF current_char IN ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"] THEN
+            vowel_count := vowel_count + 1;
+        END_IF
+
+        // to ensure loop exits when the period (.) character is encountered 
+
+        IF current_char = "." THEN
+            EXIT_LOOP;
+        END_IF
+    END_FOR
+
+    Write("Number of characters: ", character_count);
+    Write("Number of words: ", word_count);
+    Write("Number of vowels: ", vowel_count);
+END
