@@ -1,0 +1,30 @@
+ALGORITHM sentence_analysis_improvement
+VAR
+    char_count:INTEGER
+    word_count:INTEGER
+    vowel_count:INTEGER
+    sentence:STRING
+    vowels:STRING := "AEIOUaeiou"
+    i:INTEGER
+BEGIN
+    Read(sentence)
+    FOR i FROM 0 TO sentence.length - 1 STEP step  DO
+        IF (sentence[i] === " ") THEN
+            char_count := char_count;
+            word_count := word_count + 1
+        ELSE_IF (sentence[i] === ".") THEN
+            word_count := word_count + 1
+            char_count := char_count + 1
+        ELSE
+            char_count := char_count + 1;
+            word_count := word_count
+        END_IF
+
+        IF (vowels.includes(sentence[i])) THEN
+            vowel_count := vowel_count + 1
+        END_IF
+    END_FOR
+    Write(char_count)
+    Write(word_count)
+    Write(vowel_count)
+END
